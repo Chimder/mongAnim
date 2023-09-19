@@ -11,7 +11,7 @@ import bodyParser from "body-parser";
 //   optionSuccessStatus: 200,
 // };
 const URL = process.env.MONGODB_URL;
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 connect(URL, { useUnifiedTopology: true })
