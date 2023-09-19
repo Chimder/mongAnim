@@ -1,25 +1,20 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+import express from "express";
+import bodyParser from "body-parser";
+import * as MangaCrt from "../Controllers/Manga-controller.js";
+import multer from "multer";
+const upload = multer();
 
-const {
-  getAllManga,
-  getMangaById,
-  getMangaAll,
-  changeManga,
-  deleteManga,
-} = require("../Controllers/Manga-controller");
-
-const router = express.Router();
+export const router = express.Router();
 const jsonParser = bodyParser.json();
 
-router.get("/mangaList", getAllManga);
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
-router.get("/mangaList/:id", getMangaById);
+router.get("/manka", MangaCrt.getAllManga);
 
-router.get("/mangaList/all/", jsonParser, getMangaAll);
+router.get("/manka/:id", MangaCrt.getMangaById);
 
-router.post("/mangaList", jsonParser, changeManga);
+router.get("/mankaFilter",urlencodedParser, MangaCrt.getMangaAll);
 
-router.delete("/anim/:id", deleteManga);
+// router.post("/manka", jsonParser, MangaCrt.changeManga);
 
-module.exports = router;
+// router.delete("/manka/:id", MangaCrt.deleteManga);

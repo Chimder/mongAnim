@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from"mongoose";
 
 const Schema = mongoose.Schema;
 
@@ -24,5 +24,5 @@ const mangaSchema = new Schema({
   genres: [String],
 });
 
-const Manka = mongoose.model("Manka", mangaSchema);
-module.exports = Manka;
+export const Manka = mongoose.model("Manka", mangaSchema);
+// module.exports = Manka;

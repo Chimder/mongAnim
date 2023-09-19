@@ -1,10 +1,10 @@
-const Manka = require("../Models/Manga.model");
+import { Manka } from "../Models/Manga.js";
 
 const handleError = (res, error) => {
   res.status(500).json({ error });
 };
 
-const getAllManga = (req, res) => {
+export const getAllManga = (req, res) => {
   Manka.find()
     .then((manga) => {
       res.status(200).json(manga);
@@ -12,7 +12,7 @@ const getAllManga = (req, res) => {
     .catch(() => handleError(res, "not find mangaList"));
 };
 
-const getMangaById = (req, res) => {
+export const getMangaById = (req, res) => {
   Manka.findById(req.params.id)
     .then((manga) => {
       res.status(200).json(manga);
@@ -20,7 +20,8 @@ const getMangaById = (req, res) => {
     .catch(() => handleError(res, "not findById"));
 };
 
-const getMangaAll = (req, res) => {
+export const getMangaAll = (req, res) => {
+  console.log(req.body);
   Manka.find()
     .all("genres", req.body)
     .then((mangas) => {
@@ -29,24 +30,16 @@ const getMangaAll = (req, res) => {
     .catch(() => handleError(res, "not findAll"));
 };
 
-const changeManga = (req, res) => {
-  const manga = new Manka(req.body);
-  manga
-    .save()
-    .then((manga) => res.status(201).json(manga))
-    .catch(() => handleError(res, "not change manga"));
-};
+// export const changeManga = (req, res) => {
+//   const manga = new Manka(req.body);
+//   manga
+//     .save()
+//     .then((manga) => res.status(201).json(manga))
+//     .catch(() => handleError(res, "not change manga"));
+// };
 
-const deleteManga = (req, res) => {
-  Manka.findByIdAndDelete(req.params.id)
-    .then((manga) => res.status(200).json(manga))
-    .catch(() => handleError(res, "not delete manga"));
-};
-
-module.exports = {
-  getAllManga,
-  getMangaById,
-  getMangaAll,
-  changeManga,
-  deleteManga,
-};
+// export const deleteManga = (req, res) => {
+//   Manka.findByIdAndDelete(req.params.id)
+//     .then((manga) => res.status(200).json(manga))
+//     .catch(() => handleError(res, "not delete manga"));
+// };
