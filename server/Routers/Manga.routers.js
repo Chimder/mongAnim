@@ -17,4 +17,3 @@ router.post("/manka", jsonParser, MangaCrt.getMangaAll);
 
 // router.post("/manka", jsonParser, MangaCrt.changeManga);
 
-// router.delete("/manka/:id", MangaCrt.deleteManga);
