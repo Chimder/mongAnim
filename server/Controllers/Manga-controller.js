@@ -20,9 +20,9 @@ export const getMangaById = (req, res) => {
     .catch(() => handleError(res, "not findById"));
 };
 
-export const getMangaAll = (req, res) => {
+export const getMangaAll = async(req, res) => {
   console.log(req.body);
-  Manka.find()
+  await Manka.find()
     .all("genres", req.body)
     .then((mangas) => {
       res.status(200).json(mangas);
