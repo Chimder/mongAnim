@@ -3,11 +3,16 @@ import { connect } from "mongoose";
 import { router } from "./Routers/Manga.routers.js";
 import "dotenv/config";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 const URL = process.env.MONGODB_URL;
 const PORT = 5000;
 const app = express();
 
+const corsOptions = {
+  origin: "http://localhost:3000/",
+  optionSuccessStatus: 200,
+};
 ////////////////////////////////////////////////////////////////////////////
 connect(URL, { useUnifiedTopology: true })
   .then(() => console.log("Mongoose connected"))
@@ -17,7 +22,8 @@ connect(URL, { useUnifiedTopology: true })
     })
   )
   .catch((err) => console.log(`Mongoose Error: ${err}`));
-
-app.use(json());
+////////////////////////////////////////////////////////////////////////////
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(json());
 app.use(router);
