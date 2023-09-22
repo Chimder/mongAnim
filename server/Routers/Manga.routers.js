@@ -23,4 +23,3 @@ router.post("/mankas", cors(corsOptions), jsonParser, MangaCrt.getMangaAll);
 
 router.post("/mankasInput", cors(corsOptions), jsonParser, MangaCrt.getByInput);
 
-// router.post("/manka", jsonParser, MangaCrt.changeManga);
