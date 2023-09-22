@@ -18,6 +18,6 @@ connect(URL, { useUnifiedTopology: true })
   )
   .catch((err) => console.log(`Mongoose Error: ${err}`));
 
-app.use(express.json());
 app.use(json());
+app.use(express.json());
 app.use(router);
