@@ -12,8 +12,6 @@ connect(URL, { useUnifiedTopology: true })
   .then(() => console.log("Mongoose connected"))
   .catch((err) => console.log(`Mongoose Error: ${err}`));
 
-console.log(port);
-console.log(process.env.PORT);
 
 app.use(express.json());
 app.use(
