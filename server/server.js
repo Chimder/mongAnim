@@ -1,5 +1,4 @@
 import express, { json } from "express";
-import cors from "cors";
 import { connect } from "mongoose";
 import { router } from "./Routers/Manga.routers.js";
 import "dotenv/config";
@@ -21,5 +20,4 @@ connect(URL, { useUnifiedTopology: true })
 
 app.use(express.json());
 app.use(json());
-app.use(cors());
 app.use(router);
