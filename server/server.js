@@ -11,10 +11,6 @@ connect(URL, { useUnifiedTopology: true })
   .then(() => console.log("Mongoose connected"))
   .catch((err) => console.log(`Mongoose Error: ${err}`));
 
-app.listen(process.env.PORT || 5000, (err) => {
-  err ? console.log(err) : console.log(`APP listen port:${process.env.PORT || 5000}`);
-});
-
 app.use(express.json());
 app.use(
   cors({
@@ -23,3 +19,9 @@ app.use(
 );
 
 app.use(router);
+
+app.listen(process.env.PORT || 5000, (err) => {
+  err
+    ? console.log(err)
+    : console.log(`APP listen port:${process.env.PORT || 5000}`);
+});
