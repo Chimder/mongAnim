@@ -3,7 +3,8 @@ import { connect } from "mongoose";
 import { router } from "./Routers/Manga.routers.js";
 import "dotenv/config";
 import bodyParser from "body-parser";
-import cors from "cors";
+// import cors from "cors";
+const cors = require("cors");
 
 const URL = process.env.MONGODB_URL;
 const PORT = 5000;
@@ -15,6 +16,14 @@ const app = express();
 // app.use(cors(corsOptions));
 
 // app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000/", "https://animga.vercel.app/"],
+  })
+);
+app.use(express.json());
+app.use(json());
+app.use(router);
 ////////////////////////////////////////////////////////////////////////////
 connect(URL, { useUnifiedTopology: true })
   .then(() => console.log("Mongoose connected"))
@@ -25,12 +34,3 @@ connect(URL, { useUnifiedTopology: true })
   )
   .catch((err) => console.log(`Mongoose Error: ${err}`));
 ////////////////////////////////////////////////////////////////////////////
-
-app.use(
-  cors({
-    origin: ["http://localhost:3000/", "https://animga.vercel.app/"],
-  })
-);
-app.use(express.json());
-app.use(json());
-app.use(router);
