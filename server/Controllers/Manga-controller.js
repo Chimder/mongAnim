@@ -12,14 +12,6 @@ export const getAllManga = (req, res) => {
     .catch(() => handleError(res, "not find mangaList"));
 };
 
-// export const getMangaById = (req, res) => {
-//   Manka.findById(req.params.id)
-//     .then((manga) => {
-//       res.status(200).json(manga);
-//     })
-//     .catch(() => handleError(res, "not findById"));
-// };
-
 export const getMangaByName = (req, res) => {
   Manka.find({ name: req.params.name })
     .then((manga) => {
@@ -38,7 +30,7 @@ export const getMangaAll = async (req, res) => {
 };
 
 export const getByInput = async (req, res) => {
-  console.log(req.body.data)
+  console.log(req.body.data);
   await Manka.aggregate([
     { $match: { name: { $regex: req.body.data, $options: "i" } } },
   ])
