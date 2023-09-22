@@ -15,12 +15,6 @@ const app = express();
 // app.use(cors(corsOptions));
 
 // app.use(cors());
-app.use(cors({
-    origin: ['http://localhost:3000/', 'https://animga.vercel.app/']
-}));
-app.use(express.json());
-app.use(json());
-app.use(router);
 ////////////////////////////////////////////////////////////////////////////
 connect(URL, { useUnifiedTopology: true })
   .then(() => console.log("Mongoose connected"))
@@ -31,3 +25,12 @@ connect(URL, { useUnifiedTopology: true })
   )
   .catch((err) => console.log(`Mongoose Error: ${err}`));
 ////////////////////////////////////////////////////////////////////////////
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000/", "https://animga.vercel.app/"],
+  })
+);
+app.use(express.json());
+app.use(json());
+app.use(router);
