@@ -9,7 +9,6 @@ export const getAllManga = (req, res) => {
     .then((manga) => {
       res.status(200).json(manga);
     })
-    .then(() => console.log(process.env.PORT))
     .catch(() => handleError(res, "not find mangaList"));
 };
 

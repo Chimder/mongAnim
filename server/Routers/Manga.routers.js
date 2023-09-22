@@ -15,6 +15,4 @@ router.post("/mankas", jsonParser, MangaCrt.getMangaAll);
 
 router.post("/mankasInput", jsonParser, MangaCrt.getByInput);
 
-console.log(process.env.PORT);
-
 // router.get("/manka/:id", MangaCrt.getMangaById);
