@@ -8,11 +8,16 @@ import cors from "cors";
 const URL = process.env.MONGODB_URL;
 const PORT = 5000;
 const app = express();
-
 // const corsOptions = {
 //   origin: "http://localhost:3000/",
 //   optionSuccessStatus: 200,
 // };
+// app.use(cors(corsOptions));
+
+app.use(cors());
+app.use(express.json());
+app.use(json());
+app.use(router);
 ////////////////////////////////////////////////////////////////////////////
 connect(URL, { useUnifiedTopology: true })
   .then(() => console.log("Mongoose connected"))
@@ -23,7 +28,3 @@ connect(URL, { useUnifiedTopology: true })
   )
   .catch((err) => console.log(`Mongoose Error: ${err}`));
 ////////////////////////////////////////////////////////////////////////////
-// app.use(cors(corsOptions));
-app.use(express.json());
-app.use(json());
-app.use(router);
