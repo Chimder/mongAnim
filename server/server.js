@@ -3,8 +3,8 @@ import { connect } from "mongoose";
 import { router } from "./Routers/Manga.routers.js";
 import "dotenv/config";
 import bodyParser from "body-parser";
-// import cors from "cors";
-const cors = require("cors");
+import cors from "cors";
+// const cors = require("cors");
 
 const URL = process.env.MONGODB_URL;
 const PORT = 5000;
