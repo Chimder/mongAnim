@@ -16,21 +16,19 @@ const app = express();
 // app.use(cors(corsOptions));
 
 // app.use(cors());
+app.listen(PORT, (err) => {
+  err ? console.log(err) : console.log(`APP listen port:${PORT}`);
+});
 app.use(express.json());
 app.use(json());
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://animga.vercel.app']
+    origin: ["http://localhost:3000", "https://animga.vercel.app"],
   })
 );
 app.use(router);
 ////////////////////////////////////////////////////////////////////////////
 connect(URL, { useUnifiedTopology: true })
   .then(() => console.log("Mongoose connected"))
-  .then(() =>
-    app.listen(PORT, (err) => {
-      err ? console.log(err) : console.log(`APP listen port:${PORT}`);
-    })
-  )
   .catch((err) => console.log(`Mongoose Error: ${err}`));
 ////////////////////////////////////////////////////////////////////////////
