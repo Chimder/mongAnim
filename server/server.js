@@ -9,9 +9,6 @@ const URL = process.env.MONGODB_URL;
 const PORT = 5000;
 const app = express();
 
-const corsOptions = {
-  origin: true,
-};
 ////////////////////////////////////////////////////////////////////////////
 connect(URL, { useUnifiedTopology: true })
   .then(() => console.log("Mongoose connected"))
@@ -22,7 +19,7 @@ connect(URL, { useUnifiedTopology: true })
   )
   .catch((err) => console.log(`Mongoose Error: ${err}`));
 
-app.use(json());
-app.use(cors(corsOptions));
-app.use(router);
 app.use(express.json());
+app.use(json());
+app.use(cors());
+app.use(router);
