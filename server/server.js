@@ -16,13 +16,13 @@ const app = express();
 // app.use(cors(corsOptions));
 
 // app.use(cors());
-app.use(
-  cors({
-    origin: ["http://localhost:3000/", "https://animga.vercel.app/"],
-  })
-);
 app.use(express.json());
 app.use(json());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(router);
 ////////////////////////////////////////////////////////////////////////////
 connect(URL, { useUnifiedTopology: true })
