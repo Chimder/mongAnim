@@ -1,18 +1,18 @@
 import express from "express";
 import bodyParser from "body-parser";
-import * as MangaCrt from "../Controllers/Manga-controller.js";
+import * as charactersCntr from "../Controllers/characters-controller.js";
 
 export const router = express.Router();
 const jsonParser = bodyParser.json();
 
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
-router.get("/mankas", MangaCrt.getAllManga);
+// router.get("/mankas", charactersCntr.getAllManga);
 
-router.get("/manka/:name", MangaCrt.getMangaByName);
+// router.get("/manka/:name", charactersCntr.getMangaByName);
 
-router.post("/mankas", jsonParser, MangaCrt.getMangaAll);
+// router.post("/mankas", jsonParser, charactersCntr.getMangaAll);
 
-router.post("/mankasInput", jsonParser, MangaCrt.getByInput);
+// router.post("/mankasInput", jsonParser, charactersCntr.getByInput);
 
 // router.get("/manka/:id", MangaCrt.getMangaById);
